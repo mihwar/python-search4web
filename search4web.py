@@ -1,6 +1,6 @@
 #!/usr/bin/env python
  # -*- coding: utf-8 -*-
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 def search4letters(phrase: str, letters: str = 'aeiou') -> set:
     """Return a set of the 'letters' found in 'phrase'."""
@@ -9,8 +9,8 @@ def search4letters(phrase: str, letters: str = 'aeiou') -> set:
 app = Flask(__name__)
 
 @app.route('/')
-def hello() -> str:
-    return 'Hello world from Flask!'
+def hello() -> '302':
+    return redirect('/entry')
 
 @app.route('/search4', methods=['POST'])
 def do_search() -> 'html':
